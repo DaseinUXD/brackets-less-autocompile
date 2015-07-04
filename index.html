@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>{less} for [B]rackets by DaseinUXD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">{less} for [B]rackets</h1>
+      <h2 class="project-tagline">compile {less} files from within [B]rackets... automatically!</h2>
+      <a href="https://github.com/DaseinUXD/brackets-less-autocompile" class="btn">View on GitHub</a>
+      <a href="https://github.com/DaseinUXD/brackets-less-autocompile/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/DaseinUXD/brackets-less-autocompile/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="less-for-brackets" class="anchor" href="#less-for-brackets" aria-hidden="true"><span class="octicon octicon-link"></span></a>{less} for [B]rackets</h1>
+
+<h1></h1>
+
+<p>an extension that adds automatic compilation of {less} files upon saving.</p>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>{less} for [B]rackets is installed from the Brackets Extension Manager. Please restart Brackets after installing the extension.</p>
+
+<h3>
+<a id="compile-options" class="anchor" href="#compile-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compile Options</h3>
+
+<p>LESS compile options can be set in the first line of the edited file:</p>
+
+<pre><code>  `// out: ../dist/app.css, compress: true, strictMath: true`
+</code></pre>
+
+<p><em>Option Commands</em></p>
+
+<pre><code>`out`
+</code></pre>
+
+<p>redirect the css output to a different file</p>
+
+<pre><code>`main`
+</code></pre>
+
+<p>compile a different file instead of this one (ignores all other options)</p>
+
+<pre><code>`compress`
+</code></pre>
+
+<p>compress the css output</p>
+
+<pre><code>`strictMath`
+</code></pre>
+
+<p>require brackets around math expressions</p>
+
+<pre><code>`sourceMap`
+</code></pre>
+
+<p>generate a source map</p>
+
+<pre><code>`autoprefixer`
+</code></pre>
+
+<p>value is passed as browsers to the autoprefixer-plugin, use a semicolon  <code>;</code> to separate multiple character entries.  Uses <a href="https://github.com/postcss/autoprefixer/">autoprefixer</a>.</p>
+
+<pre><code>`cleancss`
+</code></pre>
+
+<p>value is passed as compatibility to the cleancss-plugin - (not compatible with source-maps) Uses <a href="https://github.com/jakubpawlowicz/clean-css/">clean-css</a>.</p>
+
+<h4>
+<a id="untested-options" class="anchor" href="#untested-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Untested Options</h4>
+
+<p>Other less compiler options might also work, but are currently untested.</p>
+
+<p>See <a href="https://github.com/gruntjs/grunt-contrib-less#options">Grunt LESS</a> for an extensive of options.</p>
+
+<h3>
+<a id="project-wide-compile-options" class="anchor" href="#project-wide-compile-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project-wide Compile Options</h3>
+
+<p>You can tell the extension to always compile a specific set of files in a project independent of the edited file by creating a configuration file called <code>.brackets.json</code> or <code>compile.json</code> in your project's root folder:</p>
+
+<pre><code>   `{ "less": [ "path/to/file1.less", "path/to/file2.less" ] }`
+</code></pre>
+
+<p>All file paths must be relative to the project's root folder. To disable less-autocompile for a project, specify an empty list of files:</p>
+
+<pre><code>    `{ "less": [] }`
+</code></pre>
+
+<hr>
+
+<h3>
+<a id="faq" class="anchor" href="#faq" aria-hidden="true"><span class="octicon octicon-link"></span></a>FAQ</h3>
+
+<p>How can I redirect the output to a separate file?</p>
+
+<blockquote>
+<p>Add the following line to the head of your less file:</p>
+
+<pre><code>// out: new-file.css
+</code></pre>
+</blockquote>
+
+<p>How can I supress compiling this less file / compile a different less file than the one being edited?</p>
+
+<blockquote>
+<p>Add a reference to the master.less file to the head of the imported less file:</p>
+
+<pre><code>// main: master.less
+</code></pre>
+</blockquote>
+
+<p>How can I supress the compilation of a single less file</p>
+
+<blockquote>
+<p>Set out to null</p>
+
+<pre><code>// out: null
+</code></pre>
+</blockquote>
+
+<h3>
+<a id="acknowledgements" class="anchor" href="#acknowledgements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Acknowledgements</h3>
+
+<ul>
+<li>Thanks to <a href="https://github.com/jlaw90">James Lawrence</a> for enabling relative imports in less.</li>
+<li>Thanks to <a href="https://github.com/zaggino">Martin Zagora</a> for adding the less verison number to the output.</li>
+<li>Thanks to <a href="https://github.com/deemeetar">Dimitar S.</a> for allowing users to specify a custom output path.</li>
+<li>Thanks to <a href="https://github.com/FezVrasta">FezVrasta</a> for tweaking the less compiler settings.</li>
+<li>Thanks to <a href="https://github.com/KenRud">Kenneth Ruddick</a> for the compile.json configuration addition.</li>
+<li>Thanks to <a href="https://github.com/piccaso">Florian Fida</a> for kicking off autoprefixer and cleancss support.</li>
+</ul>
+
+<h3>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h3>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2013 Jonathan Diehl</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/DaseinUXD/brackets-less-autocompile">{less} for [B]rackets</a> is maintained by <a href="https://github.com/DaseinUXD">DaseinUXD</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
